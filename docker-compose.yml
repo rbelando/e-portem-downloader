@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  eportem_downloader:
+    build:
+      context: .
+    volumes:
+      - ./e-portem-downloader:/e-portem-downloader
