@@ -36,10 +36,17 @@ class EportemResponse():
             closing_div_index = response_text[start_date_index:].find('</div>')
             end_index_date = start_date_index + closing_div_index
             doc_date = response_text[start_date_index:end_index_date]
-            # Getting document type
-            end_index_doc_type_pattern = response_text[end_index_date:].find(
+            # Getting document title
+            end_index_title_pattern = response_text[end_index_date:].find(
                 DOC_TYPE_PATTERN) + len(DOC_TYPE_PATTERN)
-            start_doc_type_index = end_index_doc_type_pattern + end_index_date
+            start_title_index = end_index_title_pattern + end_index_date
+            closing_div_index = response_text[start_title_index:].find(
+                '</div>')
+            end_index_title = start_title_index + closing_div_index
+            # Getting document type
+            end_index_doc_type_pattern = response_text[end_index_title:].find(
+                DOC_TYPE_PATTERN) + len(DOC_TYPE_PATTERN)
+            start_doc_type_index = end_index_doc_type_pattern + end_index_title
             closing_div_index = response_text[start_doc_type_index:].find(
                 '</div>')
             end_index_doc_type = start_doc_type_index + closing_div_index
